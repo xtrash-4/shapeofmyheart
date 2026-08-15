@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Shape of My Heart — 3D Modern Art Gallery</title>
+    <meta name="description" content="Immersive 3D Minimalist Glass Pavilion & Modern Art Gallery for Minji">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Italiana&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- Fullscreen 3D WebGL Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay Layer -->
+    <div class="app-ui">
+
+        <!-- Subtle Top-Right Badge -->
+        <div class="gallery-watermark">
+            <span>✦ Created by Husni</span>
+        </div>
+
+        <!-- Initial Screen: Minimalist Play Button Only -->
+        <div id="intro-screen" class="intro-screen">
+            <div class="minimal-play-wrapper">
+                <button id="btn-start-explore" class="minimal-play-btn" title="Play & Enter Exhibition">
+                    <span class="material-symbols-rounded play-glyph">play_arrow</span>
+                    <div class="pulse-ring-outer"></div>
+                    <div class="pulse-ring-inner"></div>
+                </button>
+                <span class="play-label-hint">CLICK TO ENTER</span>
+            </div>
+        </div>
+
+        <!-- Bottom Controller Dock (Clean & Minimalist) -->
+        <div class="bottom-container hidden" id="bottom-container">
+            
+            <!-- Architectural Glass Player Bar -->
+            <div class="player-bar-glass" id="player-bar">
+                <div class="player-left">
+                    <div class="vinyl-disc-mini" id="mini-disc">
+                        <img src="album.jpg" alt="Minji" class="mini-album-img">
+                        <div class="center-hole"></div>
+                    </div>
+                    <div class="song-info">
+                        <div class="song-title-row">
+                            <span class="song-title">Shape of My Heart</span>
+                            <div class="sound-bars" id="sound-bars">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <span class="song-artist">Backstreet Boys • Gallery Audio</span>
+                    </div>
+                </div>
+
+                <div class="player-center">
+                    <span class="time-text" id="cur-time">0:00</span>
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress-bar-glow" id="progress-bar-glow"></div>
+                    </div>
+                    <span class="time-text" id="dur-time">-0:24</span>
+                </div>
+
+                <div class="player-right">
+                    <button id="btn-prev" class="ctrl-btn" title="Previous Exhibit">
+                        <span class="material-symbols-outlined">skip_previous</span>
+                    </button>
+                    <button id="btn-play" class="play-btn-circle" title="Play / Pause Tour">
+                        <span id="play-icon" class="material-symbols-outlined">pause</span>
+                    </button>
+                    <button id="btn-next" class="ctrl-btn" title="Next Exhibit">
+                        <span class="material-symbols-outlined">skip_next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ultra-Compact Floating Ending Bar (Zero Obstruction) -->
+        <div id="constellation-ending-overlay" class="constellation-ending-overlay hidden">
+            <div class="compact-ending-dock">
+                <div class="ending-dock-left">
+                    <div class="ending-pill-tag">🌌 3D CONSTELLATION</div>
+                    <span class="ending-dock-title">Shape of My Heart</span>
+                    <span class="ending-dock-sub">✦ Created by Husni ✦</span>
+                </div>
+                <div class="ending-dock-right">
+                    <button id="btn-replay-tour" class="ending-dock-btn btn-replay-mini" title="Replay Exhibition">
+                        <span class="material-symbols-outlined">replay</span>
+                        <span>Replay</span>
+                    </button>
+                    <button id="btn-free-roam" class="ending-dock-btn btn-roam-mini" title="Free Roam 360°">
+                        <span class="material-symbols-outlined">3d_rotation</span>
+                        <span>Explore 360°</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Source: lagushapeofmyheart.mp3 -->
+        <audio id="main-audio" src="lagushapeofmyheart.mp3" preload="auto"></audio>
+
+    </div>
+
+    <!-- Main 3D Art Gallery Universe Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
