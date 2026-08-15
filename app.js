@@ -612,73 +612,78 @@ function buildFloatingDustMotes() {
     scene.add(dustParticles);
 }
 
-// 5. Standalone High-End Engraved Brass Curator Plaque Canvas Texture
+// 5. Standalone High-End Engraved Brass Curator Plaque Canvas Texture (2048x512 Ultra-HD)
 function renderCuratorPlaqueCanvas(ctx, index, text) {
-    ctx.clearRect(0, 0, 1024, 256);
+    ctx.clearRect(0, 0, 2048, 512);
 
-    const bgGrad = ctx.createLinearGradient(0, 0, 1024, 256);
-    bgGrad.addColorStop(0, '#0c0f18');
-    bgGrad.addColorStop(0.5, '#070910');
-    bgGrad.addColorStop(1, '#0c0f18');
+    const bgGrad = ctx.createLinearGradient(0, 0, 2048, 512);
+    bgGrad.addColorStop(0, '#0e1220');
+    bgGrad.addColorStop(0.5, '#070912');
+    bgGrad.addColorStop(1, '#0e1220');
     ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, 1024, 256);
+    ctx.fillRect(0, 0, 2048, 512);
 
+    // Double 24K Royal Gold Borders
     ctx.strokeStyle = '#ffcf33';
-    ctx.lineWidth = 3.5;
-    ctx.strokeRect(8, 8, 1008, 240);
+    ctx.lineWidth = 6.0;
+    ctx.strokeRect(12, 12, 2024, 488);
 
     ctx.strokeStyle = 'rgba(255, 207, 51, 0.45)';
-    ctx.lineWidth = 1.5;
-    ctx.strokeRect(14, 14, 996, 228);
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(26, 26, 1996, 460);
 
-    const corners = [[24, 24], [1000, 24], [24, 232], [1000, 232]];
+    // 4 Corner Screw Rivets
+    const corners = [[46, 46], [2002, 46], [46, 466], [2002, 466]];
     corners.forEach(([cx, cy]) => {
         ctx.fillStyle = '#ffcf33';
         ctx.beginPath();
-        ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 8, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.strokeStyle = '#05070c';
-        ctx.lineWidth = 1.0;
+        ctx.lineWidth = 2.0;
         ctx.beginPath();
-        ctx.moveTo(cx - 3, cy);
-        ctx.lineTo(cx + 3, cy);
+        ctx.moveTo(cx - 5, cy);
+        ctx.lineTo(cx + 5, cy);
         ctx.stroke();
     });
 
-    ctx.font = '700 24px "Space Grotesk", sans-serif';
+    // Top Header
+    ctx.font = '700 42px "Space Grotesk", sans-serif';
     ctx.fillStyle = '#ffcf33';
     ctx.textAlign = 'left';
-    ctx.fillText('EXHIBIT // 0' + (index + 1) + ' OF 04', 45, 54);
+    ctx.fillText('EXHIBIT // 0' + (index + 1) + ' OF 04', 80, 100);
 
     ctx.textAlign = 'right';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-    ctx.font = '600 18px "Space Grotesk", sans-serif';
-    ctx.fillText('MINJI MEMORIAL ARCHIVE', 979, 54);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.70)';
+    ctx.font = '600 34px "Space Grotesk", sans-serif';
+    ctx.fillText('MINJI MEMORIAL ARCHIVE', 1968, 100);
 
-    ctx.strokeStyle = 'rgba(255, 207, 51, 0.35)';
-    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = 'rgba(255, 207, 51, 0.45)';
+    ctx.lineWidth = 2.0;
     ctx.beginPath();
-    ctx.moveTo(45, 72);
-    ctx.lineTo(979, 72);
+    ctx.moveTo(80, 130);
+    ctx.lineTo(1968, 130);
     ctx.stroke();
 
+    // Large Prominent Crisp Lyric Text with Golden Ambient Glow
     ctx.textAlign = 'center';
     ctx.fillStyle = '#ffffff';
-    ctx.shadowColor = 'rgba(255, 207, 51, 0.85)';
-    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(255, 207, 51, 0.95)';
+    ctx.shadowBlur = 22;
 
-    let fontSize = 42;
-    if (text.length > 35) fontSize = 36;
-    ctx.font = 'italic 600 ' + fontSize + 'px "Cormorant Garamond", "Playfair Display", Georgia, serif';
+    let fontSize = 84;
+    if (text.length > 40) fontSize = 70;
+    ctx.font = 'italic 700 ' + fontSize + 'px "Cormorant Garamond", "Playfair Display", Georgia, serif';
 
     const fullDisplay = '“' + text + '”';
-    ctx.fillText(fullDisplay, 512, 144);
+    ctx.fillText(fullDisplay, 1024, 295);
 
+    // Bottom Subtitle
     ctx.shadowBlur = 0;
-    ctx.fillStyle = 'rgba(255, 207, 51, 0.75)';
-    ctx.font = '600 18px "Space Grotesk", sans-serif';
-    ctx.fillText('✦   BACKSTREET BOYS • SHAPE OF MY HEART   ✦', 512, 210);
+    ctx.fillStyle = 'rgba(255, 207, 51, 0.85)';
+    ctx.font = '600 32px "Space Grotesk", sans-serif';
+    ctx.fillText('✦   BACKSTREET BOYS • SHAPE OF MY HEART   ✦', 1024, 430);
 }
 
 // 6. Build 4 Authentic Masterpiece Museum Frames with Dedicated Smooth Picture Spotlights
@@ -820,21 +825,23 @@ function buildGalleryExhibits() {
             plaqueGroup.add(rod);
         }
 
-        const plaqueWidth = 2.6;
-        const plaqueHeight = 0.60;
+        const plaqueWidth = 3.3;
+        const plaqueHeight = 0.80;
 
         const plaqueBoxGeo = new THREE.BoxGeometry(plaqueWidth, plaqueHeight, 0.04);
         const plaqueBox = new THREE.Mesh(plaqueBoxGeo, brassPlaqueFrameMat);
         plaqueGroup.add(plaqueBox);
 
         const plaqueCanvas = document.createElement('canvas');
-        plaqueCanvas.width = 1024;
-        plaqueCanvas.height = 256;
+        plaqueCanvas.width = 2048;
+        plaqueCanvas.height = 512;
         const plaqueCtx = plaqueCanvas.getContext('2d');
         renderCuratorPlaqueCanvas(plaqueCtx, index, item.text);
 
         const plaqueTexture = new THREE.CanvasTexture(plaqueCanvas);
         plaqueTexture.encoding = THREE.sRGBEncoding;
+        plaqueTexture.generateMipmaps = true;
+        plaqueTexture.minFilter = THREE.LinearMipmapLinearFilter;
 
         const plaqueFaceGeo = new THREE.PlaneGeometry(plaqueWidth - 0.04, plaqueHeight - 0.04);
         const plaqueFaceMat = new THREE.MeshBasicMaterial({ map: plaqueTexture });
